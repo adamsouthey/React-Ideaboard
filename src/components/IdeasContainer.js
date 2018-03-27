@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
+import Idea from './Idea';
 
 class IdeasContainer extends Component {
 
@@ -11,7 +12,8 @@ class IdeasContainer extends Component {
   }
 
   componentDidMount() {
-    Axios.get('http://localhost:3001/api/v1/ideas.json')
+    Axios
+      .get('http://localhost:3001/api/v1/ideas.json')
       .then(response => {
         console.log(response);
         this.setState({ideas: response.data});
@@ -23,15 +25,7 @@ class IdeasContainer extends Component {
     return (
       <div>
         {this.state.ideas.map((idea) => {
-          return(
-            <div className="tile" key={idea.id} >
-              <h4>{idea.title}</h4>
-              <p>{idea.body}</p>
-              <em> This item was created at: {idea.created_at}</em>
-              <br />
-              <em> This item was updated at: {idea.updated_at}</em>
-            </div>
-          );
+          return (<Idea idea={idea} key={idea.id} />);
         })}
       </div>
     );
