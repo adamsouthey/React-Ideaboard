@@ -11,7 +11,8 @@ class IdeasContainer extends Component {
     super(props);
     this.state = {
       ideas: [],
-      editingIdeaId: null
+      editingIdeaId: null,
+      notification: ''
     };
   }
 
