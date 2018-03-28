@@ -89,7 +89,10 @@ class IdeasContainer extends Component {
                 resetNotification={this.resetNotification}
               />);
             } else {
-              return (<Idea idea={idea} key={idea.id} onClick={this.enableEditing} />);
+              return (<Idea idea={idea} key={idea.id}
+                onClick={this.enableEditing}
+                onDelete={this.deleteIdea}
+              />);
             }
           })}
         </div>
