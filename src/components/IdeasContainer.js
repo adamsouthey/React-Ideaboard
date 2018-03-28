@@ -55,7 +55,10 @@ class IdeasContainer extends Component {
       const ideas = update(this.state.ideas, {
         [ideaIndex]: { $set: idea }
       });
-      this.setState({ideas: ideas});
+      this.setState({
+        ideas: ideas,
+        notification: 'All changes saved'
+      });
     }
 
 
