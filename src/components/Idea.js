@@ -1,12 +1,31 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Idea = ({idea}) =>
-  <div className="tile" key={idea.id}>
-    <h4>{idea.title}</h4>
-    <p>{idea.body}</p>
-    <em> This item was created at: {idea.created_at}</em>
-    <br />
-    <em> This item was updated at: {idea.updated_at}</em>
-  </div>;
+class Idea extends Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     ideas: [],
+  //     title: '',
+  //     body: ''
+  //   };
+  // }
+
+  handleClick = () => {
+    this.props.onClick(this.props.idea.id);
+  }
+
+  render () {
+    return(
+      <div className="tile">
+        <h4 onClick={this.handleClick}>
+          {this.props.idea.title}
+        </h4>
+        <p onClick={this.handleClick}>
+          {this.props.idea.body}
+        </p>
+      </div>
+    );
+  }
+}
 
 export default Idea;

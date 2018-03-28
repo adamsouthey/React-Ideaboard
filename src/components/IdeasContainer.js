@@ -64,6 +64,10 @@ class IdeasContainer extends Component {
       this.setState({notification: ''});
     }
 
+    enableEditing = (id) => {
+      this.setState({editingIdeaId: id});
+    }
+
 
     render() {
       return (
@@ -82,7 +86,7 @@ class IdeasContainer extends Component {
                 resetNotification={this.resetNotification}
               />);
             } else {
-              return (<Idea idea={idea} key={idea.id} />);
+              return (<Idea idea={idea} key={idea.id} onClick={this.enableEditing} />);
             }
           })}
         </div>
