@@ -17,7 +17,7 @@ class Idea extends Component {
   render () {
     return(
       <div className="tile">
-        <span className="deleteButton">
+        <span className="deleteButton" onClick={this.handleDelete}>
           Delete
         </span>
         <h4 onClick={this.handleClick}>
