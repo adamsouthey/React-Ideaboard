@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import Idea from './Idea';
+import update from 'immutability-helper';
 
 class IdeasContainer extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      ideas: []
+      ideas: [],
+      editingIdeaId: null
     };
   }
 
@@ -33,6 +35,14 @@ class IdeasContainer extends Component {
     )
       .then(response => {
         console.log(response);
+        const ideas = update(this.state.ideas, {
+          $splice: [[0, 0, response.data]]
+        });
+        //this indicates that we’ve just added a new idea and we want to edit it immediately.
+        this.setState({
+          ideas: ideas,
+          editingIdeaId: response.data.id
+        });
       })
       .catch(error => console.log(error));
   }
