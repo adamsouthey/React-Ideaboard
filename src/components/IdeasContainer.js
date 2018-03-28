@@ -65,6 +65,9 @@ class IdeasContainer extends Component {
             onClick={this.addNewIdea} >
             New Idea
           </button>
+          <span className="notification">
+            {this.state.notification}
+          </span>
           {this.state.ideas.map((idea) => {
             if(this.state.editingIdeaId === idea.id) {
               return(<IdeaForm idea={idea} key={idea.id}
