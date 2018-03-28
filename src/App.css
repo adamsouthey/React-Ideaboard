@@ -35,8 +35,8 @@ html{
 }
 
 .tile {
-  height: 250px;
-  width: 250px;
+  height: 150px;
+  width: 150px;
   margin: 10px;
   margin-top: 60px;
   background: lightyellow;
