@@ -60,6 +60,17 @@ class IdeasContainer extends Component {
         notification: 'All changes saved'
       });
     }
+
+    deleteIdea = (id) => {
+      Axios.delete(`http://localhost:3001/api/v1/ideas/${id}`)
+        .then(response => {
+          const ideaIndex = this.state.ideas.findIndex(x => x.id === id);
+          const ideas = update(this.state.ideas, { $splice: [[ideaIndex, 1]]});
+          this.setState({ideas: ideas});
+        })
+        .catch(error => console.log(error));
+    }
+
     resetNotification = () => {
       this.setState({notification: ''});
     }
@@ -69,6 +80,7 @@ class IdeasContainer extends Component {
         this.title.focus();
       });
     }
+
 
 
     render() {
